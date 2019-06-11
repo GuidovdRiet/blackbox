@@ -1,11 +1,8 @@
-import React from 'react';
+// Components
+import House from "../components/media/illustrations/House";
 
 const building = () => {
-  return (
-    <div>
-      building
-    </div>
-  );
+  return <House />;
 };
 
 export default building;
