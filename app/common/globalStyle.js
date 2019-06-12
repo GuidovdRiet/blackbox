@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0px;
     /* overflow-x: hidden;  */
     max-width: 100%;
-    background-color: ${({ theme }) => theme.purple};
+    background-color: ${({ theme }) => theme.lightBlue};
   }
   a, button {
     text-decoration: none;
