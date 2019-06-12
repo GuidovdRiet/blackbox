@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { number } from "prop-types";
 
-const House = () => {
+const House = ({ currentFloor }) => {
   return (
-    <SVG id="Laag_1" viewBox="0 0 425.9 611.9">
+    <SVG id="Laag_1" viewBox="0 0 425.9 611.9" currentFloor={currentFloor}>
       <path
         id="Path"
         d="M323 209.7V100.5L162.4 7.8 81.8 54.3v341l-19.3 11.2-.2.1-4.9 2.9-.5.3-.1.2h-.1l-.4.2-.3.2-2.6 1.5-31 18-.1.1c-8.3 2.5-13.6 11-13.6 24.1L80 495.4l41.8 24.1 29.6 17.1.1.1 47.2 27.3 69.4 40h.1l40.2-23.3c.4-1.3.8-2.6 1-3.9l.1.1 27.6 16 .3-.6 80.6-46.6v-281l-95-55z"
@@ -193,6 +194,64 @@ const House = () => {
 
 export default House;
 
+House.propTypes = {
+  currentFloor: number
+};
+
+const groundFloor = `
+#Path_19_,
+#Path_32_,
+#Path_7_,
+#Path_12_,
+#Path_15_ {
+  fill: #e74c3c;
+}`;
+
+const firstFloor = `
+#Path_18_,
+#Path_27_,
+#Path_33_,
+#Path_8_,
+#Path_9_,
+#Path_13_ {
+  fill: #e74c3c;
+}`;
+
+const secondFloor = `
+#Path_20_,
+#Path_23_,
+#Path_29_,
+#Path_6_,
+#Path_11_,
+#Path_14_ {
+  fill: #e74c3c;
+}`;
+
+const thirdFloor = `
+#Path_21_,
+#Path_26_,
+#Path_28_,
+#Path_5_,
+#Path_16_,
+#Path_10_ {
+  fill: #e74c3c;
+}`;
+
+const fourthFloor = `
+#Path_17_,
+#Path_25_,
+#Path_31_{
+  fill: #e74c3c;
+}`;
+
+const fifthFloor = `
+#Path_22_,
+#Path_24_,
+#Path_30_,
+#Path_34_ {
+  fill: #e74c3c;
+}`;
+
 const SVG = styled.svg`
   .st1 {
     fill: #a4c2f7;
@@ -200,4 +259,11 @@ const SVG = styled.svg`
   .st4 {
     fill: #1583d8;
   }
+
+  ${({ currentFloor }) => currentFloor === 0 && groundFloor};
+  ${({ currentFloor }) => currentFloor === 1 && firstFloor};
+  ${({ currentFloor }) => currentFloor === 2 && secondFloor};
+  ${({ currentFloor }) => currentFloor === 3 && thirdFloor};
+  ${({ currentFloor }) => currentFloor === 4 && fourthFloor};
+  ${({ currentFloor }) => currentFloor === 5 && fifthFloor};
 `;

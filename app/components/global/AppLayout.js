@@ -19,7 +19,10 @@ AppLayout.propTypes = {
 };
 
 const Wrapper = styled.div`
-  margin-top: 65px;
+  margin-top: 40px;
   display: flex;
   flex: 1;
+  @media (max-width: 960px) {
+    flex-direction: column-reverse;
+  }
 `;

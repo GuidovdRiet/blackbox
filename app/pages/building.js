@@ -1,15 +1,19 @@
+import { useState } from "react";
+
 // Components
 import House from "../components/media/illustrations/House";
 import AppLayout from "../components/global/AppLayout";
 import CardWrapper from "../components/wrappers/CardWrapper";
 import Card from "../components/cards/Card";
 
-const building = () => {
+const Building = () => {
+  const [currentFloor, setCurrentFloor] = useState(0);
+
   return (
     <AppLayout>
       <CardWrapper>
-        <Card __type="layout">
-          <p>Let op</p>
+        <Card __type="layout" color="darkBlue">
+          <p>Let op!</p>
         </Card>
         <Card __type="layout">
           <p>De rook verspreidt zich via de brandgang</p>
@@ -20,12 +24,12 @@ const building = () => {
         </Card>
       </CardWrapper>
       <CardWrapper>
-        <Card __type="house">
-          <House />
+        <Card __type="house" setCurrentFloor={setCurrentFloor}>
+          <House currentFloor={currentFloor} />
         </Card>
       </CardWrapper>
     </AppLayout>
   );
 };
 
-export default building;
+export default Building;

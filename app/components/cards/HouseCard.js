@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import { oneOfType, arrayOf, node, string } from "prop-types";
+import { oneOfType, arrayOf, node, string, func } from "prop-types";
 
 // Components
 import FloorPlan from "../navigation/FloorPlan";
 
-const HouseCard = ({ children }) => {
+const HouseCard = ({ children, setCurrentFloor }) => {
   return (
     <Wrapper>
-      <FloorPlan />
+      <FloorPlan setCurrentFloor={setCurrentFloor} />
       {children}
     </Wrapper>
   );
@@ -16,7 +16,8 @@ const HouseCard = ({ children }) => {
 export default HouseCard;
 
 HouseCard.propTypes = {
-  children: oneOfType([arrayOf(node), node, string])
+  children: oneOfType([arrayOf(node), node, string]),
+  setCurrentFloor: func
 };
 
 const Wrapper = styled.div`
