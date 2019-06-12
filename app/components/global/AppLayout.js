@@ -5,7 +5,11 @@ import { oneOfType, arrayOf, node, string } from "prop-types";
 import { Container } from "./PageLayout";
 
 const AppLayout = ({ children }) => {
-  return <Container>{children}</Container>;
+  return (
+    <Container>
+      <Wrapper>{children}</Wrapper>
+    </Container>
+  );
 };
 
 export default AppLayout;
@@ -13,3 +17,9 @@ export default AppLayout;
 AppLayout.propTypes = {
   children: oneOfType([arrayOf(node), node, string]).isRequired
 };
+
+const Wrapper = styled.div`
+  background-color: blue;
+  display: flex;
+  flex: 1;
+`;

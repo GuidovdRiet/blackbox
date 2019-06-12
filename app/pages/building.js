@@ -9,6 +9,9 @@ const building = () => {
     <AppLayout>
       <CardWrapper>
         <Card __type="layout" />
+        <Card __type="layout" />
+        <Card __type="layout" />
+        <Card __type="layout" />
       </CardWrapper>
       <CardWrapper>
         <Card __type="layout" />

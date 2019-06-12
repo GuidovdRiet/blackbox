@@ -12,5 +12,8 @@ CardWrapper.propTypes = {
 };
 
 const Wrapper = styled.div`
-  background-color: orange;
+  display: flex;
+  flex: 1;
+  margin: 0 18px;
+  flex-direction: column;
 `;

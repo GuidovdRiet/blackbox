@@ -1,9 +1,12 @@
+import styled from "styled-components";
+
 const LayoutCard = () => {
-  return (
-    <div>
-      Layout card
-    </div>
-  );
+  return <Wrapper>Layout card</Wrapper>;
 };
 
 export default LayoutCard;
+
+const Wrapper = styled.div`
+  margin-bottom: 20px;
+  background-color: orange;
+`;
