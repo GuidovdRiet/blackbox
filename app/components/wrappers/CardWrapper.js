@@ -13,7 +13,15 @@ CardWrapper.propTypes = {
 
 const Wrapper = styled.div`
   display: flex;
-  flex: 1;
   margin: 0 18px;
   flex-direction: column;
+  &:first-child {
+    flex: 1.1;
+  }
+  &:nth-child(2) {
+    flex: 2;
+  }
+  &:nth-child(3) {
+    flex: 2;
+  }
 `;

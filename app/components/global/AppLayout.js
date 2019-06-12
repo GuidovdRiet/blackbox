@@ -19,7 +19,7 @@ AppLayout.propTypes = {
 };
 
 const Wrapper = styled.div`
-  background-color: blue;
+  margin-top: 65px;
   display: flex;
   flex: 1;
 `;
