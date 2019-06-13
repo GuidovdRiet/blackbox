@@ -7,7 +7,7 @@ import CardWrapper from "../components/wrappers/CardWrapper";
 import Card from "../components/cards/Card";
 
 const Building = () => {
-  const [currentFloor, setCurrentFloor] = useState(0);
+  const [currentFloor, setCurrentFloor] = useState(null);
 
   return (
     <AppLayout>

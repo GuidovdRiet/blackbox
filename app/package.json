@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "now-build": "next build",
+    "start": "NODE_ENV=production node server.js"
   },
   "author": "Guido van de Riet & Jurrian Lammerts",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
     "next": "^8.1.0",
     "next-page-transitions": "^1.0.0-beta.2",
     "prettier": "^1.18.2",
