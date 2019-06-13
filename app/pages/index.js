@@ -1,9 +1,10 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import Link from "next/link";
 
 const index = () => {
   return (
     <Wrapper>
-      init
+      <Link href="/building">Building →</Link>
     </Wrapper>
   );
 };
@@ -11,5 +12,5 @@ const index = () => {
 export default index;
 
 const Wrapper = styled.div`
-  background-color: #8AC9F9;
-`
+  background-color: #8ac9f9;
+`;

@@ -69,9 +69,13 @@ const Wrapper = styled.div`
   }
 
   .link-wrapper {
-    background-color: #c6c7fd;
+    background-color: #2085d570;
     margin: 0 3px;
+    height: 55px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     p {
       margin: 0;
       padding: 0 5px;

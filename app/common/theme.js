@@ -5,6 +5,7 @@ const theme = {
   lightBlue: "#C7E6FE",
   mediumBlue: "#89C7F7",
   darkBlue: "#2085D5",
+  transparent: "transparent",
 
   // Fonts
   typefaces,
