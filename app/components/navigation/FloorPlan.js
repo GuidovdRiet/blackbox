@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { func } from "prop-types";
+import Link from "next/link";
 
 const FloorPlan = ({ setCurrentFloor }) => {
   const floors = [5, 4, 3, 2, 1, 0];
@@ -8,16 +9,18 @@ const FloorPlan = ({ setCurrentFloor }) => {
     <Wrapper>
       {floors &&
         floors.map(floor => (
-          <button
-            className="floor-button"
-            type="button"
-            onClick={() => setCurrentFloor(floor)}
-          >
-            <p>
-              {floor === 0 ? "BG" : `${floor}`}
-              {floor !== 0 && <span>e</span>}
-            </p>
-          </button>
+          <Link as={`/floor/${floor}`} href={`/floor?floor=${floor}`}>
+            <button
+              className="floor-button"
+              type="button"
+              onClick={() => setCurrentFloor(floor)}
+            >
+              <p>
+                {floor === 0 ? "BG" : `${floor}`}
+                {floor !== 0 && <span>e</span>}
+              </p>
+            </button>
+          </Link>
         ))}
     </Wrapper>
   );
