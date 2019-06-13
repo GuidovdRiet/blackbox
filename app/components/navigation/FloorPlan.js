@@ -1,15 +1,15 @@
 import styled from "styled-components";
-import { func } from "prop-types";
+import { func, number } from "prop-types";
 import Link from "next/link";
 
-const FloorPlan = ({ setCurrentFloor }) => {
+const FloorPlan = ({ setCurrentFloor, currentFloor }) => {
   const floors = [5, 4, 3, 2, 1, 0];
 
   return (
     <Wrapper>
       {floors &&
         floors.map(floor => (
-          <Link as={`/floor/${floor}`} href={`/floor?floor=${floor}`}>
+          <>
             <button
               className="floor-button"
               type="button"
@@ -20,7 +20,14 @@ const FloorPlan = ({ setCurrentFloor }) => {
                 {floor !== 0 && <span>e</span>}
               </p>
             </button>
-          </Link>
+            {currentFloor === floor && (
+              <Link as={`/floor/${floor}`} href={`/floor?floor=${floor}`}>
+                <div className="link-wrapper">
+                  <p>Info →</p>
+                </div>
+              </Link>
+            )}
+          </>
         ))}
     </Wrapper>
   );
@@ -29,7 +36,8 @@ const FloorPlan = ({ setCurrentFloor }) => {
 export default FloorPlan;
 
 FloorPlan.propTypes = {
-  setCurrentFloor: func
+  setCurrentFloor: func,
+  currentFloor: number
 };
 
 const Wrapper = styled.div`
@@ -40,6 +48,7 @@ const Wrapper = styled.div`
   min-width: 70px;
   border: 3px solid ${({ theme }) => theme.darkBlue};
   padding: 3px;
+
   .floor-button {
     height: 55px;
     margin: 3px;
@@ -56,6 +65,16 @@ const Wrapper = styled.div`
     }
     span {
       font-size: 1.05rem;
+    }
+  }
+
+  .link-wrapper {
+    background-color: #c6c7fd;
+    margin: 0 3px;
+    cursor: pointer;
+    p {
+      margin: 0;
+      padding: 0 5px;
     }
   }
 `;

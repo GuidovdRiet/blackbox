@@ -1,5 +1,7 @@
+import Link from "next/link";
+
 const floor = () => {
-  return <div>Floor</div>;
+  return <Link href="/building">← Building</Link>;
 };
 
 export default floor;

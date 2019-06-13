@@ -24,7 +24,11 @@ const Building = () => {
         </Card>
       </CardWrapper>
       <CardWrapper>
-        <Card __type="house" setCurrentFloor={setCurrentFloor}>
+        <Card
+          __type="house"
+          setCurrentFloor={setCurrentFloor}
+          currentFloor={currentFloor}
+        >
           <House currentFloor={currentFloor} />
         </Card>
       </CardWrapper>
