@@ -4,8 +4,8 @@
                                                      //which is derived from the chart in datasheet
  
 /**********************Software Related Macros*******************/
-#define         CALIBARAION_SAMPLE_TIMES     (50)    //define how many samples you are going to take in the calibration phase
-#define         CALIBRATION_SAMPLE_INTERVAL  (500)   //define the time interal(in milisecond) between each samples in the
+#define         CALIBARAION_SAMPLE_TIMES     (25)    //define how many samples you are going to take in the calibration phase
+#define         CALIBRATION_SAMPLE_INTERVAL  (200)   //define the time interal(in milisecond) between each samples in the
                                                      //cablibration phase
 #define         READ_SAMPLE_INTERVAL         (50)    //define how many samples you are going to take in normal operation
 #define         READ_SAMPLE_TIMES            (5)     //define the time interal(in milisecond) between each samples in 
@@ -43,14 +43,16 @@ float           Ro           =  10;                 //Ro is initialized to 10 ki
 void setup()
 {
   strip.begin();
+  // Let led strip show its working
+  chase(strip.Color(255, 0, 0)); 
+  chase(strip.Color(255, 69, 0)); 
+  chase(strip.Color(255,215,0)); 
   Serial.begin(9600);                               //UART setup, baudrate = 9600bps
   Serial.print("Calibrating...\n");                
   Ro = MQCalibration(MQ_PIN);                       //Calibrating the sensor. Please make sure the sensor is in clean air 
   Serial.print("Calibration is done...\n"); 
-  // Let led strip show its working
-  chase(strip.Color(255, 0, 0)); 
+  // Let led strip show its done calibrating
   chase(strip.Color(0, 255, 0)); 
-  chase(strip.Color(0, 0, 255)); 
   Serial.print("Ro=");
   Serial.print(Ro);
   Serial.print("kohm");
@@ -59,15 +61,15 @@ void setup()
  
 void loop()
 {
-//   Serial.print("LPG:"); 
-//   Serial.print(MQGetGasPercentage(MQRead(MQ_PIN)/Ro,GAS_LPG) );
-//   Serial.print( "ppm" );
-//   Serial.print("    ");   
-//   Serial.print("CO:"); 
-//   Serial.print(MQGetGasPercentage(MQRead(MQ_PIN)/Ro,GAS_CO) );
-//   Serial.print( "ppm" );
-//   Serial.print("    ");   
-//   Serial.print("SMOKE:"); 
+   Serial.print("LPG:"); 
+   Serial.print(MQGetGasPercentage(MQRead(MQ_PIN)/Ro,GAS_LPG) );
+   Serial.print( "ppm" );
+   Serial.print("    ");   
+   Serial.print("CO:"); 
+   Serial.print(MQGetGasPercentage(MQRead(MQ_PIN)/Ro,GAS_CO) );
+   Serial.print( "ppm" );
+   Serial.print("    ");   
+   Serial.print("SMOKE:"); 
    Serial.print(MQGetGasPercentage(MQRead(MQ_PIN)/Ro,GAS_SMOKE) );
    Serial.print( " ppm" );
    Serial.print("\n");
@@ -79,7 +81,7 @@ static void chase(uint32_t c) {
       strip.setPixelColor(i  , c); // Draw new pixel
       strip.setPixelColor(i-4, 0); // Erase pixel a few steps back
       strip.show();
-      delay(25);
+      delay(35);
   }
 }
 
@@ -97,11 +99,10 @@ float fillNeopixelBasedOnSmoke(int ppm) {
         strip.show();
       } 
     }
-    else if(percentage > 1 && percentage < 10){
+    else if(percentage > 2 && percentage < 10){
       numberOfLeds = 1;
       strip.setPixelColor(1, colour);
       strip.show();
-      strip.clear();
     }
     else if(percentage >= 10 && percentage < 20){
       numberOfLeds = 2;
@@ -109,46 +110,68 @@ float fillNeopixelBasedOnSmoke(int ppm) {
         strip.setPixelColor(i  , colour); 
         strip.show();
       }
-      strip.clear();
     }
-    else if (percentage >= 20 && percentage < 40) {
+    else if (percentage >= 20 && percentage < 30) {
+      numberOfLeds = 3;
+      for(int i=0; i<numberOfLeds; i++) {
+        strip.setPixelColor(i  , colour); 
+        strip.show();
+      }
+    }
+    else if (percentage >= 30 && percentage < 40){
       numberOfLeds = 4;
       for(int i=0; i<numberOfLeds; i++) {
         strip.setPixelColor(i  , colour); 
         strip.show();
-
       }
-      strip.clear();
     }
-    else if (percentage >= 40 && percentage < 60){
+    else if (percentage >= 40 && percentage < 50){
+      numberOfLeds = 5;
+      for(int i=0; i<numberOfLeds; i++) {
+        strip.setPixelColor(i  , colour); 
+        strip.show();
+      }
+    }
+    else if (percentage >= 50 && percentage < 60){
       numberOfLeds = 6;
       for(int i=0; i<numberOfLeds; i++) {
         strip.setPixelColor(i  , colour); 
         strip.show();
       }
-      strip.clear();
     }
-    else if (percentage >= 60 && percentage < 80) {
+    else if (percentage >= 60 && percentage < 70){
+      numberOfLeds = 7;
+      for(int i=0; i<numberOfLeds; i++) {
+        strip.setPixelColor(i  , colour); 
+        strip.show();
+      }
+    }
+    else if (percentage >= 70 && percentage < 80){
+      numberOfLeds = 8;
+      for(int i=0; i<numberOfLeds; i++) {
+        strip.setPixelColor(i  , colour); 
+        strip.show();
+      }
+    }
+    else if (percentage >= 80 && percentage < 90) {
       numberOfLeds = 10;
       for(int i=0; i<numberOfLeds; i++) {
         strip.setPixelColor(i  , colour); 
         strip.show();
       }
-      strip.clear();
     }
-    else if (percentage >= 80){
+    else if (percentage >= 90){
       numberOfLeds = 12;
       for(int i=0; i<numberOfLeds; i++) {
         strip.setPixelColor(i  , colour); 
         strip.show();
       }
-      strip.clear();
     } 
 
     Serial.print("percentage: ");
     Serial.print(percentage); 
     Serial.print("\n");
-  
+    strip.clear();
 }
  
 /**************** MQResistanceCalculation **************************************
