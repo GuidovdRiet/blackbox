@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import Link from "next/link";
 import { oneOfType, arrayOf, node, string, func, number } from "prop-types";
 
 // Components
 import FloorPlan from "../navigation/FloorPlan";
+import Button from "../buttons";
 
 const HouseCard = ({ children, setCurrentFloor, currentFloor }) => {
   return (
@@ -12,6 +14,16 @@ const HouseCard = ({ children, setCurrentFloor, currentFloor }) => {
         currentFloor={currentFloor}
       />
       {children}
+      {currentFloor && (
+        <Link
+          as={`/floor/${currentFloor}`}
+          href={`/floor?floor=${currentFloor}`}
+        >
+          <Button __type="default" className="button">
+            Bekijk deze verdieping
+          </Button>
+        </Link>
+      )}
     </Wrapper>
   );
 };
@@ -31,5 +43,10 @@ const Wrapper = styled.div`
   width: 100%;
   svg {
     max-height: 600px;
+  }
+  .button {
+    position: absolute;
+    bottom: 70px;
+    right: 43px;
   }
 `;

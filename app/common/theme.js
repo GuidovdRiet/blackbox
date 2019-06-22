@@ -7,8 +7,10 @@ const theme = {
 
   lightBlue: "#C7E6FE",
   mediumBlue: "#89C7F7",
-  darkBlue: "#2085D5",
+  darkBlue: "#102A4E",
   transparent: "transparent",
+
+  lightPink: "#EFC5B6",
 
   // Fonts
   typefaces,
