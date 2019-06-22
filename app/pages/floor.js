@@ -2,7 +2,6 @@ import Link from "next/link";
 
 // Components
 import AppLayout from "../components/global/AppLayout";
-import CardWrapper from "../components/wrappers/CardWrapper";
 import Card from "../components/cards/Card";
 
 // Illustarions
@@ -13,16 +12,12 @@ const floor = () => {
   return (
     <AppLayout>
       <Link href="/building">← Building</Link>
-      <CardWrapper>
-        <Card __type="layout" color="transparent">
-          <Sensors />
-        </Card>
-      </CardWrapper>
-      <CardWrapper>
-        <Card __type="layout" color="transparent">
-          <Floor />
-        </Card>
-      </CardWrapper>
+      <Card __type="layout" color="transparent">
+        <Sensors />
+      </Card>
+      <Card __type="layout" color="transparent">
+        <Floor />
+      </Card>
     </AppLayout>
   );
 };

@@ -1,6 +1,5 @@
 import App, { Container } from "next/app";
 import { ThemeProvider } from "styled-components";
-import { PageTransition } from "next-page-transitions";
 import { withRouter } from "next/router";
 
 // Components
@@ -26,9 +25,7 @@ class MyApp extends App {
       <Container>
         <ThemeProvider theme={theme}>
           <PageLayout>
-            <PageTransition timeout={300} classNames="page-transition">
-              <Component {...pageProps} key={router.route} />
-            </PageTransition>
+            <Component {...pageProps} key={router.route} />
           </PageLayout>
         </ThemeProvider>
       </Container>

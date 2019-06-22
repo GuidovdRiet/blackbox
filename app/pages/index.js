@@ -1,16 +1,24 @@
-import styled from "styled-components";
-import Link from "next/link";
+import { useState } from "react";
 
-const index = () => {
+// Components
+import House from "../components/media/illustrations/House";
+import AppLayout from "../components/global/AppLayout";
+import Card from "../components/cards/Card";
+
+const Home = () => {
+  const [currentFloor, setCurrentFloor] = useState(null);
+
   return (
-    <Wrapper>
-      <Link href="/building">Building →</Link>
-    </Wrapper>
+    <AppLayout>
+      <Card
+        __type="house"
+        setCurrentFloor={setCurrentFloor}
+        currentFloor={currentFloor}
+      >
+        <House currentFloor={currentFloor} />
+      </Card>
+    </AppLayout>
   );
 };
 
-export default index;
-
-const Wrapper = styled.div`
-  background-color: #8ac9f9;
-`;
+export default Home;

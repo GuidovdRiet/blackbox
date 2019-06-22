@@ -28,6 +28,7 @@ const Wrapper = styled.div`
   margin-bottom: 20px;
   padding: 40px;
   background-color: ${({ theme }) => theme.mediumBlue};
+  width: 100%;
   svg {
     max-height: 600px;
   }
