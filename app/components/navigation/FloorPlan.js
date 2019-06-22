@@ -48,6 +48,7 @@ const Wrapper = styled.div`
   min-width: 70px;
   border: 3px solid ${({ theme }) => theme.darkBlue};
   padding: 3px;
+  right: 30px;
 
   .floor-button {
     height: 55px;

@@ -43,7 +43,7 @@ const Layout = styled(Container)`
 const Wrapper = styled.div`
   display: flex;
   flex: 1;
-  background-color: #f1c40f;
+  margin-left: 95px;
   @media (max-width: 960px) {
     flex-direction: column-reverse;
   }

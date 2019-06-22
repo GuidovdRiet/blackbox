@@ -2,6 +2,9 @@ import typefaces from "./typefaces";
 
 const theme = {
   white: "#fff",
+
+  lightGrey: "#F5F5F5",
+
   lightBlue: "#C7E6FE",
   mediumBlue: "#89C7F7",
   darkBlue: "#2085D5",
@@ -14,7 +17,7 @@ const theme = {
   fontSmoothing: `
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  `,
+  `
 };
 
 export default theme;
