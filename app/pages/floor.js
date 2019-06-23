@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { withRouter } from "next/router";
 
 // Components
 import AppLayout from "../components/global/AppLayout";
@@ -8,7 +9,7 @@ import Card from "../components/cards/Card";
 import Floor from "../components/media/illustrations/Floor";
 import Floorplan from "../components/navigation/FloorPlan";
 
-const floor = () => {
+const FloorPage = () => {
   return (
     <AppLayout>
       <Card __type="layout">
@@ -20,4 +21,4 @@ const floor = () => {
   );
 };
 
-export default floor;
+export default withRouter(FloorPage);
