@@ -23,7 +23,7 @@ DefaultButton.propTypes = {
 const Button = styled.button`
   background-color: ${({ theme }) => theme.darkBlue};
   color: ${({ theme }) => theme.lightPink};
-  padding: 0 15px;
+  padding: 0 27px;
   align-items: center;
   border-radius: 40px;
   border: 0;

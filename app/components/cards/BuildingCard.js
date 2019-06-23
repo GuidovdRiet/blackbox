@@ -73,6 +73,7 @@ const Wrapper = styled.div`
     .icon {
       max-width: 23px;
       margin-left: 16px;
+      fill: ${({ theme }) => theme.darkBlue};
     }
   }
   svg {
@@ -93,5 +94,5 @@ const NavWrapper = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-end;
-  min-width: 210px;
+  min-width: 240px;
 `;
