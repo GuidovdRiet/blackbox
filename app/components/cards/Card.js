@@ -2,11 +2,11 @@ import { string } from "prop-types";
 
 // Cards
 import LayoutCard from "./LayoutCard";
-import HouseCard from "./HouseCard";
+import BuildingCard from "./BuildingCard";
 
 const cards = {
   layout: LayoutCard,
-  house: HouseCard
+  building: BuildingCard
 };
 
 const Card = ({ __type, ...props }) => {

@@ -11,9 +11,10 @@ const Home = () => {
   return (
     <AppLayout>
       <Card
-        __type="house"
+        __type="building"
         setCurrentFloor={setCurrentFloor}
         currentFloor={currentFloor}
+        adres="Overview locatie Koningsweg 10 - 300B"
       >
         <House currentFloor={currentFloor} />
       </Card>

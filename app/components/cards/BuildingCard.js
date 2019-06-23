@@ -1,21 +1,29 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { oneOfType, arrayOf, node, string, func, number } from "prop-types";
+import {
+  oneOfType,
+  arrayOf,
+  node,
+  string,
+  func,
+  number,
+  bool
+} from "prop-types";
 
 // Components
 import FloorPlan from "../navigation/FloorPlan";
 import Button from "../buttons";
 
-const HouseCard = ({ children, setCurrentFloor, currentFloor }) => {
+const BuildingCard = ({ children, setCurrentFloor, currentFloor, adres }) => {
   return (
     <Wrapper>
-      <h1 className="location">Overview locatie Koningsweg 10 - 300B</h1>
+      {adres && <h1 className="location">{adres}</h1>}
       <Container>
         <HouseWrapper>{children}</HouseWrapper>
         <NavWrapper>
           <FloorPlan
-            setCurrentFloor={setCurrentFloor}
-            currentFloor={currentFloor}
+            setCurrentFloor={setCurrentFloor && setCurrentFloor}
+            currentFloor={currentFloor && currentFloor}
           />
           {currentFloor && (
             <Button __type="default" className="button">
@@ -23,7 +31,7 @@ const HouseCard = ({ children, setCurrentFloor, currentFloor }) => {
                 as={`/floor/${currentFloor}`}
                 href={`/floor?floor=${currentFloor}`}
               >
-                Bekijk deze verdieping
+                {`Bekijk de ${currentFloor}e verdieping`}
               </Link>
             </Button>
           )}
@@ -33,12 +41,14 @@ const HouseCard = ({ children, setCurrentFloor, currentFloor }) => {
   );
 };
 
-export default HouseCard;
+export default BuildingCard;
 
-HouseCard.propTypes = {
+BuildingCard.propTypes = {
   children: oneOfType([arrayOf(node), node, string]),
   setCurrentFloor: func,
-  currentFloor: number
+  currentFloor: number,
+  adres: string,
+  building: bool
 };
 
 const Wrapper = styled.div`
@@ -51,7 +61,7 @@ const Wrapper = styled.div`
   .location {
     color: ${({ theme }) => theme.darkBlue};
     font-weight: 500;
-    margin: 20px 0 80px 12px;
+    margin: 20px 0 80px 27px;
   }
   svg {
     max-height: 470px;
