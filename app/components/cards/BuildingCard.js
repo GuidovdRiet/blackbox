@@ -1,31 +1,41 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { oneOfType, arrayOf, node, string, func, number } from "prop-types";
+import {
+  oneOfType,
+  arrayOf,
+  node,
+  string,
+  func,
+  number,
+  bool
+} from "prop-types";
 
 // Components
 import FloorPlan from "../navigation/FloorPlan";
 import Button from "../buttons";
 
-const HouseCard = ({ children, setCurrentFloor, currentFloor }) => {
+const BuildingCard = ({ children, setCurrentFloor, currentFloor, adres }) => {
   return (
     <Wrapper>
-      <h1 className="location">Overview locatie Koningsweg 10 - 300B</h1>
+      {adres && <h1 className="location">{adres}</h1>}
       <Container>
         <HouseWrapper>{children}</HouseWrapper>
         <NavWrapper>
           <FloorPlan
-            setCurrentFloor={setCurrentFloor}
-            currentFloor={currentFloor}
+            setCurrentFloor={setCurrentFloor && setCurrentFloor}
+            currentFloor={currentFloor && currentFloor}
           />
           {currentFloor && (
-            <Button __type="default" className="button">
-              <Link
-                as={`/floor/${currentFloor}`}
-                href={`/floor?floor=${currentFloor}`}
-              >
-                Bekijk deze verdieping
-              </Link>
-            </Button>
+            <Link
+              as={`/floor/${currentFloor}`}
+              href={`/floor?floor=${currentFloor}`}
+            >
+              <a>
+                <Button __type="default">
+                  {`Bekijk de ${currentFloor}e verdieping`}
+                </Button>
+              </a>
+            </Link>
           )}
         </NavWrapper>
       </Container>
@@ -33,12 +43,13 @@ const HouseCard = ({ children, setCurrentFloor, currentFloor }) => {
   );
 };
 
-export default HouseCard;
+export default BuildingCard;
 
-HouseCard.propTypes = {
+BuildingCard.propTypes = {
   children: oneOfType([arrayOf(node), node, string]),
   setCurrentFloor: func,
-  currentFloor: number
+  currentFloor: number,
+  adres: string
 };
 
 const Wrapper = styled.div`
@@ -48,16 +59,14 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  border-radius: 30px;
   .location {
     color: ${({ theme }) => theme.darkBlue};
     font-weight: 500;
-    margin: 20px 0 80px 12px;
+    margin: 20px 0 80px 27px;
   }
   svg {
     max-height: 470px;
-  }
-  .button {
-    /* width: 213px; */
   }
 `;
 
