@@ -13,11 +13,17 @@ import {
 // Components
 import FloorPlan from "../navigation/FloorPlan";
 import Button from "../buttons";
+import Icon from "../media/icons";
 
 const BuildingCard = ({ children, setCurrentFloor, currentFloor, adres }) => {
   return (
     <Wrapper>
-      {adres && <h1 className="location">{adres}</h1>}
+      {adres && (
+        <h1 className="location">
+          {adres}
+          <Icon __type="location" className="icon" />
+        </h1>
+      )}
       <Container>
         <HouseWrapper>{children}</HouseWrapper>
         <NavWrapper>
@@ -64,6 +70,10 @@ const Wrapper = styled.div`
     color: ${({ theme }) => theme.darkBlue};
     font-weight: 500;
     margin: 20px 0 80px 27px;
+    .icon {
+      max-width: 23px;
+      margin-left: 16px;
+    }
   }
   svg {
     max-height: 470px;
