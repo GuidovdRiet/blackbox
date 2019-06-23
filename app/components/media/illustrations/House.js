@@ -423,8 +423,6 @@ const fifthFloor = `
 }`;
 
 const SVG = styled.svg`
-  margin-right: 10%;
-
   .st5 {
     fill: none;
     stroke: #979797;

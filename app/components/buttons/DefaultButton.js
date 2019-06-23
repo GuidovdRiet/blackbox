@@ -26,8 +26,16 @@ const Button = styled.button`
   font-weight: 400;
   cursor: pointer;
   transition: background-color 0.1s ease-in-out;
+  border: 2px solid ${({ theme }) => theme.darkBlue};
   &:hover {
     color: ${({ theme }) => theme.darkBlue};
     background-color: ${({ theme }) => theme.lightPink};
+    border: 2px solid #d6b7b7;
+    a {
+      color: ${({ theme }) => theme.darkBlue};
+    }
+  }
+  a {
+    color: ${({ theme }) => theme.lightPink};
   }
 `;

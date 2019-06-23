@@ -34,10 +34,8 @@ const Wrapper = styled.div`
   width: 7%;
   display: flex;
   flex-direction: column;
-  position: absolute;
   min-width: 70px;
-  right: 30px;
-  bottom: 180px;
+  margin: 0 15px 60px 0;
 
   .floor-button {
     height: 70px;
@@ -54,8 +52,10 @@ const Wrapper = styled.div`
       cursor: pointer;
       background-color: ${({ theme }) => theme.lightGrey};
     }
-    span {
-      font-size: 1.05rem;
+    p {
+      font-weight: 500;
+      ${({ theme }) => theme.fontSmoothing};
+      color: ${({ theme }) => theme.darkBlue};
     }
   }
 `;

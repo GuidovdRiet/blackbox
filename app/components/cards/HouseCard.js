@@ -9,21 +9,26 @@ import Button from "../buttons";
 const HouseCard = ({ children, setCurrentFloor, currentFloor }) => {
   return (
     <Wrapper>
-      <FloorPlan
-        setCurrentFloor={setCurrentFloor}
-        currentFloor={currentFloor}
-      />
-      {children}
-      {currentFloor && (
-        <Link
-          as={`/floor/${currentFloor}`}
-          href={`/floor?floor=${currentFloor}`}
-        >
-          <Button __type="default" className="button">
-            Bekijk deze verdieping
-          </Button>
-        </Link>
-      )}
+      <h1 className="location">Overview locatie Koningsweg 10 - 300B</h1>
+      <Container>
+        <HouseWrapper>{children}</HouseWrapper>
+        <NavWrapper>
+          <FloorPlan
+            setCurrentFloor={setCurrentFloor}
+            currentFloor={currentFloor}
+          />
+          {currentFloor && (
+            <Button __type="default" className="button">
+              <Link
+                as={`/floor/${currentFloor}`}
+                href={`/floor?floor=${currentFloor}`}
+              >
+                Bekijk deze verdieping
+              </Link>
+            </Button>
+          )}
+        </NavWrapper>
+      </Container>
     </Wrapper>
   );
 };
@@ -41,12 +46,33 @@ const Wrapper = styled.div`
   padding: 40px;
   background-color: ${({ theme }) => theme.lightGrey};
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  .location {
+    color: ${({ theme }) => theme.darkBlue};
+    font-weight: 500;
+    margin: 20px 0 80px 12px;
+  }
   svg {
-    max-height: 600px;
+    max-height: 470px;
   }
   .button {
-    position: absolute;
-    bottom: 70px;
-    right: 43px;
+    /* width: 213px; */
   }
+`;
+
+const Container = styled.div`
+  display: flex;
+`;
+
+const HouseWrapper = styled.div`
+  width: 100%;
+`;
+
+const NavWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  min-width: 210px;
 `;
