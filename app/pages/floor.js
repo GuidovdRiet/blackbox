@@ -24,9 +24,11 @@ const FloorPage = ({ router: { query } }) => {
         adres={`Koningsweg ${query.floor || query.title}e verdieping`}
       >
         <Floor />
-        <Button __type="default">
-          <Link href="/">Terug naar overzicht gebouw</Link>
-        </Button>
+        <Link href="/">
+          <a>
+            <Button __type="default">Terug naar overzicht gebouw</Button>
+          </a>
+        </Link>
       </Card>
     </AppLayout>
   );

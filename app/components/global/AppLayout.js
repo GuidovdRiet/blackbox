@@ -52,7 +52,7 @@ const Wrapper = styled.div`
 const Nav = styled.div`
   width: 95px;
   height: 100vh;
-  background-color: #e67e22;
+  background-color: ${({ theme }) => theme.darkBlue};
   display: flex;
   flex-direction: column;
   left: 0;

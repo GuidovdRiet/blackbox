@@ -27,6 +27,10 @@ const Button = styled.button`
   cursor: pointer;
   transition: background-color 0.1s ease-in-out;
   border: 2px solid ${({ theme }) => theme.darkBlue};
+  font-size: 1.3rem;
+  &:focus {
+    outline: 0;
+  }
   &:hover {
     color: ${({ theme }) => theme.darkBlue};
     background-color: ${({ theme }) => theme.lightPink};

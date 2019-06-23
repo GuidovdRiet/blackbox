@@ -26,14 +26,16 @@ const BuildingCard = ({ children, setCurrentFloor, currentFloor, adres }) => {
             currentFloor={currentFloor && currentFloor}
           />
           {currentFloor && (
-            <Button __type="default">
-              <Link
-                as={`/floor/${currentFloor}`}
-                href={`/floor?floor=${currentFloor}`}
-              >
-                {`Bekijk de ${currentFloor}e verdieping`}
-              </Link>
-            </Button>
+            <Link
+              as={`/floor/${currentFloor}`}
+              href={`/floor?floor=${currentFloor}`}
+            >
+              <a>
+                <Button __type="default">
+                  {`Bekijk de ${currentFloor}e verdieping`}
+                </Button>
+              </a>
+            </Link>
           )}
         </NavWrapper>
       </Container>
@@ -47,7 +49,7 @@ BuildingCard.propTypes = {
   children: oneOfType([arrayOf(node), node, string]),
   setCurrentFloor: func,
   currentFloor: number,
-  adres: string,
+  adres: string
 };
 
 const Wrapper = styled.div`
