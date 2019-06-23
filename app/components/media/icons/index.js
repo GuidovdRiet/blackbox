@@ -6,13 +6,15 @@ import FireInfoIcon from "./FireInfoIcon";
 import LocationIcon from "./LocationIcon";
 import SettingsIcon from "./SettingsIcon";
 import UserIcon from "./UserIcon";
+import NextArrowIcon from "./NextArrowIcon";
 
 const icons = {
   fire: FireIcon,
   fireInfo: FireInfoIcon,
   location: LocationIcon,
   settings: SettingsIcon,
-  user: UserIcon
+  user: UserIcon,
+  nextArrow: NextArrowIcon
 };
 
 const Card = ({ __type, ...props }) => {

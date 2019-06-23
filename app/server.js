@@ -16,6 +16,12 @@ app
       app.render(req, res, actualPage, queryParams);
     });
 
+    server.get("/report/:id", (req, res) => {
+      const actualPage = "/report";
+      const queryParams = { title: req.params.id };
+      app.render(req, res, actualPage, queryParams);
+    });
+
     server.get("*", (req, res) => {
       return handle(req, res);
     });
