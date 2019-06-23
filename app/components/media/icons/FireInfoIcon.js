@@ -1,9 +1,8 @@
-const FireInfo = () => {
+const FireInfo = ({...props}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="57"
-      height="83"
+      {...props}
       viewBox="0 0 57 83"
     >
       <g transform="translate(0 .5)" fill="none" fillRule="evenodd">

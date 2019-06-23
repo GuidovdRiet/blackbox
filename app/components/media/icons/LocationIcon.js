@@ -1,9 +1,8 @@
-const Fire = () => {
+const Fire = ({...props}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="31"
-      height="45"
+      {...props}
       viewBox="0 0 31 45"
     >
       <path
