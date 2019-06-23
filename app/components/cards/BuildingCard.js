@@ -65,7 +65,7 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  border-radius: 30px;
+  border-radius: ${({ theme }) => theme.cardBorderRadius};
   .location {
     color: ${({ theme }) => theme.darkBlue};
     font-weight: 500;
