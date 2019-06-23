@@ -52,7 +52,7 @@ const Wrapper = styled.div`
   display: flex;
   flex: 1;
   margin-left: 95px;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;

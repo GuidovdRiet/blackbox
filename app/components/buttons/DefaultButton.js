@@ -33,7 +33,8 @@ const Button = styled.button`
   font-size: 1.23rem;
   font-weight: 400;
   cursor: pointer;
-  transition: background-color 0.1s ease-in-out;
+  transition: background-color 0.1s ease-in-out, border 0.1s ease-in-out,
+    color 0.1s ease-in-out;
   border: 2px solid ${({ theme }) => theme.darkBlue};
   font-size: 1.3rem;
   display: flex;

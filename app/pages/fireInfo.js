@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 // Components
 import AppLayout from "../components/global/AppLayout";
@@ -6,85 +7,44 @@ import Card from "../components/cards/Card";
 import Button from "../components/buttons";
 import Icon from "../components/media/icons";
 
+const reports = ["1400999", "1401000", "1401001", "1401002", "1401003"];
+
 const FireInfo = () => (
   <AppLayout>
     <Card __type="layout" color="darkBlue">
       <Title>Brandevaluatie</Title>
-      <InfoCard>
-        <div className="left-wrapper">
-          <ul className="info-category">
-            <li>Melding:</li>
-            <li>Categorie:</li>
-            <li>Datum:</li>
-            <li>Tijd:</li>
-          </ul>
-          <ul className="info">
-            <li>1400999</li>
-            <li>Grip 1</li>
-            <li>19-06-2019</li>
-            <li>18:06 uur</li>
-          </ul>
-        </div>
-        <div className="right-wrapper">
-          <div className="location-wrapper">
-            <p>Coolsingel 12-35, Rotterdam</p>
-            <Icon __type="location" className="location" />
-          </div>
-          <Button __type="default" className="button">
-            Bekijk rapport
-          </Button>
-        </div>
-      </InfoCard>
-      <InfoCard>
-        <div className="left-wrapper">
-          <ul className="info-category">
-            <li>Melding:</li>
-            <li>Categorie:</li>
-            <li>Datum:</li>
-            <li>Tijd:</li>
-          </ul>
-          <ul className="info">
-            <li>1400999</li>
-            <li>Grip 1</li>
-            <li>19-06-2019</li>
-            <li>18:06 uur</li>
-          </ul>
-        </div>
-        <div className="right-wrapper">
-          <div className="location-wrapper">
-            <p>Coolsingel 12-35, Rotterdam</p>
-            <Icon __type="location" className="location" />
-          </div>
-          <Button __type="default" className="button">
-            Bekijk rapport
-          </Button>
-        </div>
-      </InfoCard>
-      <InfoCard>
-        <div className="left-wrapper">
-          <ul className="info-category">
-            <li>Melding:</li>
-            <li>Categorie:</li>
-            <li>Datum:</li>
-            <li>Tijd:</li>
-          </ul>
-          <ul className="info">
-            <li>1400999</li>
-            <li>Grip 1</li>
-            <li>19-06-2019</li>
-            <li>18:06 uur</li>
-          </ul>
-        </div>
-        <div className="right-wrapper">
-          <div className="location-wrapper">
-            <p>Coolsingel 12-35, Rotterdam</p>
-            <Icon __type="location" className="location" />
-          </div>
-          <Button __type="default" className="button">
-            Bekijk rapport
-          </Button>
-        </div>
-      </InfoCard>
+      {reports &&
+        reports.map(report => (
+          <InfoCard>
+            <div className="left-wrapper">
+              <ul className="info-category">
+                <li>Melding:</li>
+                <li>Categorie:</li>
+                <li>Datum:</li>
+                <li>Tijd:</li>
+              </ul>
+              <ul className="info">
+                <li>{`${report}`}</li>
+                <li>Grip 1</li>
+                <li>19-06-2019</li>
+                <li>18:06 uur</li>
+              </ul>
+            </div>
+            <div className="right-wrapper">
+              <div className="location-wrapper">
+                <p>Coolsingel 12-35, Rotterdam</p>
+                <Icon __type="location" className="location" />
+              </div>
+              <Link href={`/report?report=${report}`} as={`/report/${report}`}>
+                <a>
+                  <Button __type="default" className="button">
+                    Bekijk rapport
+                  </Button>
+                </a>
+              </Link>
+            </div>
+          </InfoCard>
+        ))}
     </Card>
   </AppLayout>
 );
