@@ -11,7 +11,7 @@ const FloorPlan = ({ setCurrentFloor, currentFloor, router: { query } }) => {
         floors.map((floor, i) => (
           <Button
             type="button"
-            highlight={floor === Number(query.title)}
+            highlight={floor === Number(query.title) || floor === Number(query.floor)}
             onClick={() => setCurrentFloor && setCurrentFloor(floor)}
             key={i.toString()}
           >
