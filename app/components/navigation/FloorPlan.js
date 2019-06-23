@@ -45,9 +45,8 @@ const Button = styled.button`
   width: 70px;
   transition: background-color 0.13s ease-in-out;
   border: 2px solid ${({ theme }) => theme.darkBlue};
-  ${({ highlight, theme }) =>
-    highlight && `background-color: ${theme.lightGrey}`}
-  background-color: ${({ theme }) => theme.lightPink};
+  background-color: ${({ theme, highlight }) =>
+    highlight ? "#93989e" : theme.lightPink};
   margin-bottom: -2px;
   &:focus {
     outline: 0;

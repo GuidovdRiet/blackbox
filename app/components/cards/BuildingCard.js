@@ -26,7 +26,7 @@ const BuildingCard = ({ children, setCurrentFloor, currentFloor, adres }) => {
             currentFloor={currentFloor && currentFloor}
           />
           {currentFloor && (
-            <Button __type="default" className="button">
+            <Button __type="default">
               <Link
                 as={`/floor/${currentFloor}`}
                 href={`/floor?floor=${currentFloor}`}
@@ -48,7 +48,6 @@ BuildingCard.propTypes = {
   setCurrentFloor: func,
   currentFloor: number,
   adres: string,
-  building: bool
 };
 
 const Wrapper = styled.div`
@@ -65,9 +64,6 @@ const Wrapper = styled.div`
   }
   svg {
     max-height: 470px;
-  }
-  .button {
-    /* width: 213px; */
   }
 `;
 
