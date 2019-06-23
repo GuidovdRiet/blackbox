@@ -26,7 +26,7 @@ const FloorPage = ({ router: { query } }) => {
         <Floor />
         <Link href="/">
           <a>
-            <Button __type="default">Terug naar overzicht gebouw</Button>
+            <Button __type="default" arrowLeft>Terug naar overzicht gebouw</Button>
           </a>
         </Link>
       </Card>

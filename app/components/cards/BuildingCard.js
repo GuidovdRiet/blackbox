@@ -37,7 +37,7 @@ const BuildingCard = ({ children, setCurrentFloor, currentFloor, adres }) => {
               href={`/floor?floor=${currentFloor}`}
             >
               <a>
-                <Button __type="default">
+                <Button __type="default" arrowRight>
                   {`Bekijk de ${currentFloor}e verdieping`}
                 </Button>
               </a>

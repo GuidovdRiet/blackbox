@@ -1,14 +1,15 @@
 import styled from "styled-components";
-import { oneOfType, arrayOf, node, string } from "prop-types";
+import { oneOfType, arrayOf, node, string, bool } from "prop-types";
 
 // Components
 import Icon from "../media/icons";
 
-const DefaultButton = ({ children, className }) => {
+const DefaultButton = ({ children, className, arrowRight, arrowLeft }) => {
   return (
     <Button type="button" className={className}>
+      {arrowLeft && <Icon __type="nextArrow" className="icon icon-left" />}
       <p>{children}</p>
-      <Icon __type="nextArrow" className="icon" />
+      {arrowRight && <Icon __type="nextArrow" className="icon" />}
     </Button>
   );
 };
@@ -17,7 +18,9 @@ export default DefaultButton;
 
 DefaultButton.propTypes = {
   children: oneOfType([arrayOf(node), node, string]),
-  className: string
+  className: string,
+  arrowLeft: bool,
+  arrowRight: bool
 };
 
 const Button = styled.button`
@@ -47,6 +50,9 @@ const Button = styled.button`
   }
   a {
     color: ${({ theme }) => theme.lightPink};
+  }
+  .icon-left {
+    transform: scale(-1);
   }
   .icon {
     width: 20px;
