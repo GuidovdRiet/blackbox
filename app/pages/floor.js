@@ -2,6 +2,7 @@ import Link from "next/link";
 import { withRouter } from "next/router";
 import { useState } from "react";
 import { object } from "prop-types";
+import styled from "styled-components";
 
 // Components
 import AppLayout from "../components/global/AppLayout";
@@ -24,11 +25,10 @@ const FloorPage = ({ router: { query } }) => {
         __type="building"
         setCurrentFloor={setCurrentFloor}
         currentFloor={currentFloor}
+        currentSensor={currentSensor}
+        showSensorInfo
         adres={`Koningsweg ${query.floor || query.title}e verdieping`}
       >
-        <div>
-          <h1>{currentSensor}</h1>
-        </div>
         <Floor setCurrentSensor={setCurrentSensor} />
         <Link href="/">
           <a>
