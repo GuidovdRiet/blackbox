@@ -1,7 +1,6 @@
 #define         MQ_PIN                       (0)     //define which analog input channel you are going to use
 #define         RL_VALUE                     (5)     //define the load resistance on the board, in kilo ohms
 #define         RO_CLEAN_AIR_FACTOR          (9.83)  //RO_CLEAR_AIR_FACTOR=(Sensor resistance in clean air)/RO,
-//which is derived from the chart in datasheet
 
 /**********************Software Related Macros*******************/
 #define         CALIBARAION_SAMPLE_TIMES     (25)    //define how many samples you are going to take in the calibration phase
