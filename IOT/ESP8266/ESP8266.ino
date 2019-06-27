@@ -35,11 +35,13 @@ float           SmokeCurve[3] = {2.3, 0.53, -0.44};
 float           Ro           =  10;
 
 String API = SECRET_WRITE_APIKEY;
-String AP = SECRET_AP;   
-String PASS = SECRET_PASS;   
+String AP = SECRET_AP;
+String PASS = SECRET_PASS;
 String HOST = SECRET_HOST;
 String PORT = SECRET_PORT;
-String field = "field1";
+String field_SMOKE = "field1";
+String field_CO = "field2";
+String field_LPG = "field3";
 
 int countTrueCommand;
 int countTimeCommand;
@@ -55,7 +57,7 @@ void setup() {
   chase(strip.Color(255, 215, 0));
   Serial.begin(9600);
   Serial.print("Calibrating...\n");
-  Ro = MQCalibration(MQ_PIN);                      
+  Ro = MQCalibration(MQ_PIN);
   Serial.print("Calibration is done...\n");
   // Let led strip show its done calibrating
   chase(strip.Color(0, 255, 0));
@@ -69,9 +71,16 @@ void setup() {
   sendCommand("AT+CWJAP=\"" + AP + "\",\"" + PASS + "\"", 20, "OK");
 }
 
+//String field_SMOKE = "field1";
+//String field_CO = "field2";
+//String field_LPG = "field3";
+
+
 void loop() {
-  valSensor = MQGetGasPercentage(MQRead(MQ_PIN) / Ro, GAS_SMOKE);
-  String getData = "GET /update?api_key=" + API + "&" + field + "=" + String(valSensor);
+  val_smoke = MQGetGasPercentage(MQRead(MQ_PIN) / Ro, GAS_SMOKE);
+  val_CO = MQGetGasPercentage(MQRead(MQ_PIN) / Ro, GAS_CO);
+  val_LPG = MQGetGasPercentage(MQRead(MQ_PIN) / Ro, GAS_LPG);
+  String getData = "GET /update?api_key=" + API + "&" + field_SMOKE + "=" + String(val_smoke) + "&" + field_CO + "=" + String(val_CO) + "&" + field_LPG + "=" + String(val_LPG);
   sendCommand("AT+CIPMUX=1", 5, "OK");
   sendCommand("AT+CIPSTART=0,\"TCP\",\"" + HOST + "\"," + PORT, 15, "OK");
   sendCommand("AT+CIPSEND=0," + String(getData.length() + 4), 4, ">");
