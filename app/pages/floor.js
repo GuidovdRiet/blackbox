@@ -14,6 +14,9 @@ import Floorplan from "../components/navigation/FloorPlan";
 
 const FloorPage = ({ router: { query } }) => {
   const [currentFloor, setCurrentFloor] = useState(null);
+  const [currentSensor, setCurrentSensor] = useState(3);
+
+  console.log({ currentSensor });
 
   return (
     <AppLayout>
@@ -23,10 +26,15 @@ const FloorPage = ({ router: { query } }) => {
         currentFloor={currentFloor}
         adres={`Koningsweg ${query.floor || query.title}e verdieping`}
       >
-        <Floor />
+        <div>
+          <h1>{currentSensor}</h1>
+        </div>
+        <Floor setCurrentSensor={setCurrentSensor} />
         <Link href="/">
           <a>
-            <Button __type="default" arrowLeft>Terug naar overzicht gebouw</Button>
+            <Button __type="default" arrowLeft>
+              Terug naar overzicht gebouw
+            </Button>
           </a>
         </Link>
       </Card>

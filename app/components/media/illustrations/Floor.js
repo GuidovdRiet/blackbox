@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { func } from "prop-types";
 
-const Floor = () => {
+const Floor = ({ setCurrentSensor }) => {
   return (
     <SVG xmlns="http://www.w3.org/2000/svg" id="Laag_1" viewBox="0 0 572 397">
       <path
@@ -11,13 +12,17 @@ const Floor = () => {
       <path id="Path-4" className="st0" d="M98 77v11.6l60.6 37.4 5.4-13.7z" />
       <path id="Path-5" className="st0" d="M44 184v11.3L220 298v-15.9z" />
       <path id="Path-6" className="st0" d="M219 282.2V298l128-74.5V211z" />
-      <path id="Path-7" className="st0" d="M347 209.6v13.8L454.8 284l2.2-12.4z" />
+      <path
+        id="Path-7"
+        className="st0"
+        d="M347 209.6v13.8L454.8 284l2.2-12.4z"
+      />
       <path
         id="Combined-Shape_1_"
         d="M387 307.3l64.5-35.6L347 211.9l-126.2 73.6L44 184.3 161.4 117 97.9 76.8 151.8 45l112.8 71.9-112.8 67.3 69 39.7L347 150.8l214 120.9-137.3 85.9c-7.4 17.5-31.2 30.4-59.5 30.4-34.2 0-61.9-18.7-61.9-41.8 0-23.1 27.7-41.8 61.9-41.8 8-.1 15.7 1 22.8 2.9z"
         fill="#e4e7ed"
       />
-      <g onClick={() => console.log('HIT 4')}>
+      <g onClick={() => setCurrentSensor(4)}>
         <g>
           <path
             id="Path_18_"
@@ -46,7 +51,7 @@ const Floor = () => {
           d="M290.5 212.9c0 2.5-2.1 4.6-4.6 4.6-2.5 0-4.6-2.1-4.6-4.6 0-2.5 2.1-4.6 4.6-4.6 2.5 0 4.6 2.1 4.6 4.6z"
         />
       </g>
-      <g onClick={() => console.log('HIT 5')}>
+      <g onClick={() => setCurrentSensor(5)}>
         <g>
           <path
             id="Path_10_"
@@ -75,7 +80,7 @@ const Floor = () => {
           d="M425 220.4c0 2.5-2.1 4.6-4.6 4.6-2.5 0-4.6-2.1-4.6-4.6 0-2.5 2.1-4.6 4.6-4.6 2.5 0 4.6 2.1 4.6 4.6z"
         />
       </g>
-      <g onClick={() => console.log('HIT 6')}>
+      <g onClick={() => setCurrentSensor(6)}>
         <g>
           <path
             id="Path_45_"
@@ -104,7 +109,7 @@ const Floor = () => {
           d="M367.4 344.4c0 2.5-2.1 4.6-4.6 4.6s-4.6-2.1-4.6-4.6c0-2.5 2.1-4.6 4.6-4.6s4.6 2.1 4.6 4.6z"
         />
       </g>
-      <g onClick={() => console.log('HIT 3')}>
+      <g onClick={() => setCurrentSensor(3)}>
         <g>
           <path
             id="Path_16_"
@@ -133,7 +138,7 @@ const Floor = () => {
           d="M188 231.6c0 2.5-2.1 4.6-4.6 4.6-2.5 0-4.6-2.1-4.6-4.6 0-2.5 2.1-4.6 4.6-4.6 2.5.1 4.6 2.1 4.6 4.6z"
         />
       </g>
-      <g onClick={() => console.log('HIT 2')}>
+      <g onClick={() => setCurrentSensor(2)}>
         <g>
           <path
             id="Path_26_"
@@ -162,7 +167,7 @@ const Floor = () => {
           d="M165.5 147.9c0 2.5-2.1 4.6-4.6 4.6-2.5 0-4.6-2.1-4.6-4.6 0-2.5 2.1-4.6 4.6-4.6 2.5 0 4.6 2 4.6 4.6z"
         />
       </g>
-      <g onClick={() => console.log('HIT 1')}>
+      <g onClick={() => setCurrentSensor(1)}>
         <g>
           <path
             id="Path_5_"
@@ -384,6 +389,10 @@ const Floor = () => {
 };
 
 export default Floor;
+
+Floor.propTypes = {
+  setCurrentSensor: func.isRequired
+};
 
 const SVG = styled.svg`
   .st0 {

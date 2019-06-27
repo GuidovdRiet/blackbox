@@ -374,7 +374,7 @@ const groundFloor = `
 #Path_7_,
 #Path_12_,
 #Path_15_ {
-  fill: #e74c3c;
+  fill: #727476;
 }`;
 
 const firstFloor = `
@@ -384,7 +384,7 @@ const firstFloor = `
 #Path_8_,
 #Path_9_,
 #Path_13_ {
-  fill: #e74c3c;
+  fill: #727476;
 }`;
 
 const secondFloor = `
@@ -394,24 +394,28 @@ const secondFloor = `
 #Path_6_,
 #Path_11_,
 #Path_14_ {
-  fill: #e74c3c;
+  fill: #727476;
 }`;
 
 const thirdFloor = `
-#Path_21_,
-#Path_26_,
-#Path_28_,
-#Path_5_,
-#Path_16_,
-#Path_10_ {
-  fill: #e74c3c;
+#Rectangle-Copy-9_3_,
+#Rectangle-Copy-9_4_,
+#Rectangle-Copy-9_5_,
+#Rectangle-Copy-9_6_,
+#Rectangle-Copy-9_7_,
+#Rectangle-Copy-9_8_,
+#Rectangle-Copy-8_2_,
+#Rectangle-Copy-8_1_,
+#Rectangle-Copy-8,
+#Rectangle-Copy-3 {
+  fill: #727476;
 }`;
 
 const fourthFloor = `
 #Path_17_,
 #Path_25_,
 #Path_31_{
-  fill: #e74c3c;
+  fill: #727476;
 }`;
 
 const fifthFloor = `
@@ -419,7 +423,7 @@ const fifthFloor = `
 #Path_24_,
 #Path_30_,
 #Path_34_ {
-  fill: #e74c3c;
+  fill: #727476;
 }`;
 
 const SVG = styled.svg`
