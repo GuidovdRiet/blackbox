@@ -74,31 +74,28 @@ void setup() {
 }
 
 void loop() {
-  val_smoke = MQGetGasPercentage(MQRead(MQ_PIN) / Ro, GAS_SMOKE);
-  val_CO = MQGetGasPercentage(MQRead(MQ_PIN) / Ro, GAS_CO);
-  val_LPG = MQGetGasPercentage(MQRead(MQ_PIN) / Ro, GAS_LPG);
+  int val_smoke = MQGetGasPercentage(MQRead(MQ_PIN) / Ro, GAS_SMOKE);
+  int val_CO = MQGetGasPercentage(MQRead(MQ_PIN) / Ro, GAS_CO);
+  int val_LPG = MQGetGasPercentage(MQRead(MQ_PIN) / Ro, GAS_LPG);
 
-  // For production uncomment next line
-//  String getData = "GET /update?api_key=" + API + "&" + field_SMOKE + "=" + String(val_smoke) + "&" + field_CO + "=" + String(val_CO) + "&" + field_LPG + "=" + String(val_LPG);
+  String getData = "GET /update?api_key=" + API + "&" + field_SMOKE + "=" + String(val_smoke) + "&" + field_CO + "=" + String(val_CO) + "&" + field_LPG + "=" + String(val_LPG);
 
-  // -- Testing begin -- //
-  valSensor = getFakeSensorData();
-  String getData = "GET /update?api_key="+ API +"&"+ field_test +"="+String(valSensor);
-  // -- Testing end  -- //
-
+  int valueFakeSensor = random(1000);
+  String getTestData = "GET /update?api_key="+ TEST_API +"&"+ field_test +"="+String(valueFakeSensor);
   
   sendCommand("AT+CIPMUX=1", 5, "OK");
   sendCommand("AT+CIPSTART=0,\"TCP\",\"" + HOST + "\"," + PORT, 15, "OK");
-  sendCommand("AT+CIPSEND=0," + String(getData.length() + 4), 4, ">");
-  esp8266.println(getData);
+
+  // Send data to production API (uncomment when working with real data)
+//  sendCommand("AT+CIPSEND=0," + String(getData.length() + 4), 4, ">");
+
+  // Send fake data to test API
+  sendCommand("AT+CIPSEND=0," + String(getTestData.length() + 4), 4, ">");
+  
+  esp8266.println(getTestData);
   delay(1500);
   countTrueCommand++;
   sendCommand("AT+CIPCLOSE=0", 5, "OK");
-}
-
-// For testing purposes
-int getFakeSensorData(){
-  return random(1000); 
 }
 
 static void chase(uint32_t c) {
