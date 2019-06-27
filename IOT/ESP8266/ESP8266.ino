@@ -35,6 +35,7 @@ float           SmokeCurve[3] = {2.3, 0.53, -0.44};
 float           Ro           =  10;
 
 String API = SECRET_WRITE_APIKEY;
+String TEST_API = SECRET_WRITE_TEST_APIKEY;
 String AP = SECRET_AP;
 String PASS = SECRET_PASS;
 String HOST = SECRET_HOST;
