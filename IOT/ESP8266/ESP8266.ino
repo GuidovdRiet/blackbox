@@ -57,12 +57,15 @@ void setup() {
   chase(strip.Color(255, 0, 0));
   chase(strip.Color(255, 69, 0));
   chase(strip.Color(255, 215, 0));
+
   Serial.begin(9600);
   Serial.print("Calibrating...\n");
   Ro = MQCalibration(MQ_PIN);
   Serial.print("Calibration is done...\n");
+
   // Let led strip show its done calibrating
   chase(strip.Color(0, 255, 0));
+
   Serial.print("Ro=");
   Serial.print(Ro);
   Serial.print("kohm");
@@ -70,32 +73,31 @@ void setup() {
   esp8266.begin(115200);
   sendCommand("AT", 5, "OK");
   sendCommand("AT+CWMODE=1", 5, "OK");
-  sendCommand("AT+CWJAP=\"" + AP + "\",\"" + PASS + "\"", 20, "OK");
+  sendCommand("AT+CWJAP=\"" + AP + "\",\"" + PASS + "\"", 15, "OK");
+  countTrueCommand = 0;
 }
 
 void loop() {
   int val_smoke = MQGetGasPercentage(MQRead(MQ_PIN) / Ro, GAS_SMOKE);
   int val_CO = MQGetGasPercentage(MQRead(MQ_PIN) / Ro, GAS_CO);
   int val_LPG = MQGetGasPercentage(MQRead(MQ_PIN) / Ro, GAS_LPG);
+  int valueFakeSensor = random(1000);
 
   String getData = "GET /update?api_key=" + API + "&" + field_SMOKE + "=" + String(val_smoke) + "&" + field_CO + "=" + String(val_CO) + "&" + field_LPG + "=" + String(val_LPG);
+  String getTestData = "GET /update?api_key=" + TEST_API + "&" + field_test + "=" + String(valueFakeSensor);
 
-  int valueFakeSensor = random(1000);
-  String getTestData = "GET /update?api_key="+ TEST_API +"&"+ field_test +"="+String(valueFakeSensor);
-  
-  sendCommand("AT+CIPMUX=1", 5, "OK");
-  sendCommand("AT+CIPSTART=0,\"TCP\",\"" + HOST + "\"," + PORT, 15, "OK");
+  switch (countTrueCommand) {
 
-  // Send data to production API (uncomment when working with real data)
-//  sendCommand("AT+CIPSEND=0," + String(getData.length() + 4), 4, ">");
+    case 0: sendCommand("AT+CIPMUX=1", 5, "OK"); break;
+    case 1: sendCommand("AT+CIPSTART=0,\"TCP\",\"" + HOST + "\"," + PORT, 15, "OK"); break;
+    case 2: sendCommand("AT+CIPSEND=0," + String(getTestData.length() + 4), 3, ">"); break;
+    case 3: esp8266.println(getTestData); delay(1500); countTrueCommand++; break;
+    case 4: sendCommand("AT+CIPCLOSE=0", 5, "OK"); break;
+    case 5:
 
-  // Send fake data to test API
-  sendCommand("AT+CIPSEND=0," + String(getTestData.length() + 4), 4, ">");
-  
-  esp8266.println(getTestData);
-  delay(1500);
-  countTrueCommand++;
-  sendCommand("AT+CIPCLOSE=0", 5, "OK");
+      countTrueCommand = 1;
+      break;
+  }
 }
 
 static void chase(uint32_t c) {
@@ -112,9 +114,9 @@ void sendCommand(String command, int maxTime, char readReplay[]) {
   Serial.print(". at command => ");
   Serial.print(command);
   Serial.print(" ");
-  while (countTimeCommand < (maxTime * 1))
+  while (countTimeCommand < (maxTime))
   {
-    esp8266.println(command);//at+cipsend
+    esp8266.println(command);
     if (esp8266.find(readReplay)) //ok
     {
       found = true;
@@ -133,7 +135,7 @@ void sendCommand(String command, int maxTime, char readReplay[]) {
 
   if (found == false)
   {
-    Serial.println("Fail");
+    Serial.println("FAIL!");
     countTrueCommand = 0;
     countTimeCommand = 0;
   }
@@ -284,7 +286,7 @@ int MQGetGasPercentage(float rs_ro_ratio, int gas_id)
   return 0;
 }
 
-int  MQGetPercentage(float rs_ro_ratio, float *pcurve)
+int  MQGetPercentage(float rs_ro_ratio, float * pcurve)
 {
   return (pow(10, ( ((log(rs_ro_ratio) - pcurve[1]) / pcurve[2]) + pcurve[0])));
 }
