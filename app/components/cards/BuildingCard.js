@@ -15,15 +15,31 @@ import FloorPlan from "../navigation/FloorPlan";
 import Button from "../buttons";
 import Icon from "../media/icons";
 
-const BuildingCard = ({ children, setCurrentFloor, currentFloor, adres }) => {
+const BuildingCard = ({
+  children,
+  setCurrentFloor,
+  currentFloor,
+  currentSensor,
+  showSensorInfo,
+  adres
+}) => {
   return (
     <Wrapper>
-      {adres && (
-        <h1 className="location">
-          {adres}
-          <Icon __type="location" className="icon" />
-        </h1>
-      )}
+      <TopWrapper>
+        {adres && (
+          <h1 className="location">
+            {adres}
+            <Icon __type="location" className="icon" />
+          </h1>
+        )}
+        {showSensorInfo && (
+          <SensorInfo>
+            <h1>Sensor {currentSensor}</h1>
+            <p>Rookcategorie 3 (zwaar)</p>
+            <p>Explosieve stof: Ja</p>
+          </SensorInfo>
+        )}
+      </TopWrapper>
       <Container>
         <HouseWrapper>{children}</HouseWrapper>
         <NavWrapper>
@@ -54,7 +70,9 @@ export default BuildingCard;
 BuildingCard.propTypes = {
   children: oneOfType([arrayOf(node), node, string]),
   setCurrentFloor: func,
+  currentSensor: func,
   currentFloor: number,
+  showSensorInfo: bool,
   adres: string
 };
 
@@ -70,14 +88,30 @@ const Wrapper = styled.div`
     color: ${({ theme }) => theme.darkBlue};
     font-weight: 500;
     margin: 20px 0 80px 27px;
+    display: flex;
     .icon {
-      max-width: 23px;
+      width: 23px;
       margin-left: 16px;
+      margin-bottom: 13px;
       fill: ${({ theme }) => theme.darkBlue};
     }
   }
   svg {
     max-height: 470px;
+  }
+`;
+
+const TopWrapper = styled.div``;
+
+const SensorInfo = styled.div`
+  background-color: #eeeeee;
+  border-radius: 40px;
+  padding: 30px;
+  position: absolute;
+  right: 172px;
+  bottom: 691px;
+  h1 {
+    color: ${({ theme }) => theme.darkBlue};
   }
 `;
 
