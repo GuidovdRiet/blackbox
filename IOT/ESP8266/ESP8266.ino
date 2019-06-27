@@ -15,6 +15,7 @@
 #include <LiquidCrystal.h>
 #include <Adafruit_NeoPixel.h>
 #include <SoftwareSerial.h>
+#include "secrets.h"
 
 /*********************Application Related Macros****************/
 #define         GAS_LPG                      (0)
@@ -32,12 +33,14 @@ float           LPGCurve[3]  =  {2.3, 0.21, -0.47};
 float           COCurve[3]  =  {2.3, 0.72, -0.34};
 float           SmokeCurve[3] = {2.3, 0.53, -0.44};
 float           Ro           =  10;
-String AP = "Stads-Lab";
-String PASS = "initialkey4iot";
-String API = "7P7QKGEHDPUD2MFB";
-String HOST = "api.thingspeak.com";
-String PORT = "80";
+
+String API = SECRET_WRITE_APIKEY;
+String AP = SECRET_AP;   
+String PASS = SECRET_PASS;   
+String HOST = SECRET_HOST;
+String PORT = SECRET_PORT;
 String field = "field1";
+
 int countTrueCommand;
 int countTimeCommand;
 boolean found = false;
@@ -106,7 +109,7 @@ void sendCommand(String command, int maxTime, char readReplay[]) {
 
   if (found == true)
   {
-    Serial.println("OYI");
+    Serial.println("CHECK!");
     countTrueCommand++;
     countTimeCommand = 0;
   }
